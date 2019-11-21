@@ -1,5 +1,5 @@
 import 'package:intl/intl.dart';
-import 'package:toro_investimentos/models/stock_history_model.dart';
+import '../models/stock_history_model.dart';
 
 class Stock {
   String ticker;

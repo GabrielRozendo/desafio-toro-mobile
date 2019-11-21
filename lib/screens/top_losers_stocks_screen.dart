@@ -11,7 +11,7 @@ class TopLosersStocksScreen extends StatelessWidget {
       bloc: _stockBloc,
       child: TopStocksScreen(
         _stockBloc.outTopLosersStocks,
-        "Maiores quedas",
+        "MAIORES BAIXAS",
         Image.network(
           'https://cdn4.iconfinder.com/data/icons/finance-vol-2-3/32/finance_statics_stock_market_position_down_loss-512.png',
           fit: BoxFit.cover,

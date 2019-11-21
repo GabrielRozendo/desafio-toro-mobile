@@ -2,7 +2,7 @@
 // import 'package:fl_animated_linechart/fl_animated_linechart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sparkline/flutter_sparkline.dart';
-import 'package:toro_investimentos/models/stock_model.dart';
+import '../models/stock_model.dart';
 
 class TopStocksScreen extends StatelessWidget {
   final Stream stream;
