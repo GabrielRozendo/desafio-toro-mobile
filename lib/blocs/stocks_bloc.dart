@@ -70,7 +70,7 @@ class StockBloc extends BlocBase {
 
   @override
   void dispose() {
-    _dataController.close();
-    _streamSubscription.cancel();
+    _dataController?.close();
+    _streamSubscription?.cancel();
   }
 }
