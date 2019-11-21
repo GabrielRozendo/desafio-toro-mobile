@@ -5,9 +5,14 @@ import '../models/stock_model.dart';
 import '../utils/date_utils.dart';
 
 class HomeScreen extends StatelessWidget {
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     final _stockBloc = BlocProvider.of<StockBloc>(context);
+
+    if (_stockBloc.hasError || _stockBloc.isEmpty == null || _stockBloc.isEmpty)
+      return Scaffold(key: _scaffoldKey, body: showError(context));
 
     return Scaffold(
       body: StreamBuilder(
@@ -31,6 +36,43 @@ class HomeScreen extends StatelessWidget {
                 });
           }),
     );
+  }
+
+  Widget showError(BuildContext context) {
+    final errorWidget = Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Icon(
+          Icons.error_outline,
+          size: 30,
+          color: Theme.of(context).errorColor,
+        ),
+        SizedBox(
+          height: 30,
+        ),
+        const Text(
+          'Não foi possível carregar as informações do servidor!',
+          textAlign: TextAlign.center,
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        const Text(
+          'Verifique a conexão e tente novamente.',
+          textAlign: TextAlign.center,
+        )
+      ],
+    );
+    // _scaffoldKey.currentState.showSnackBar(
+    //   SnackBar(
+    //     backgroundColor: Theme.of(context).errorColor,
+    //     content: Text('Não foi possível carregar as informações do servidor!'),
+    //     duration: Duration(seconds: 10),
+    //   ),
+    // );
+
+    return Center(
+        child: Padding(padding: EdgeInsets.all(12), child: errorWidget));
   }
 
   Widget gridItem(BuildContext context, Stock stock) {
