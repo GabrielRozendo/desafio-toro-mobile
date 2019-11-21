@@ -1,8 +1,8 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
-import 'package:toro_investimentos/blocs/stocks_bloc.dart';
-import 'package:toro_investimentos/models/stock_model.dart';
-import 'package:toro_investimentos/utils/date_utils.dart';
+import '../blocs/stocks_bloc.dart';
+import '../models/stock_model.dart';
+import '../utils/date_utils.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -82,8 +82,6 @@ class HomeScreen extends StatelessWidget {
                               stock.percent == 0 ? Colors.black : Colors.white),
                     )
                   ]),
-              // Expanded(
-              // child:
               Padding(
                 padding: const EdgeInsets.only(top: 8),
                 child: Text(
@@ -92,7 +90,6 @@ class HomeScreen extends StatelessWidget {
                   textAlign: TextAlign.right,
                 ),
               ),
-              // )
             ],
           ),
         ),

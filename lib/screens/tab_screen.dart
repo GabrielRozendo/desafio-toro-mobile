@@ -1,10 +1,9 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
-import 'package:toro_investimentos/blocs/stocks_bloc.dart';
+import '../blocs/stocks_bloc.dart';
 import 'home_screen.dart';
 import 'top_gainers_stocks_screen.dart';
 import 'top_losers_stocks_screen.dart';
-// import 'package:toro_investimentos/blocs/stocks_bloc.dart';
 
 class TabScreen extends StatelessWidget {
   final StockBloc _stockBloc;
@@ -46,6 +45,3 @@ class TabScreen extends StatelessWidget {
     );
   }
 }
-
-// Renata
-// 11:00

@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:rxdart/subjects.dart';
-import 'package:toro_investimentos/models/stock_history_model.dart';
-import 'package:toro_investimentos/models/stock_model.dart';
+import '../models/stock_history_model.dart';
+import '../models/stock_model.dart';
 import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
@@ -15,9 +15,7 @@ class StockBloc extends BlocBase {
       _dataController.stream.asBroadcastStream();
 
   Stream<List<Stock>> get outTopGainersStocks => outData.transform(_topGainers);
-
   Stream<List<Stock>> get outTopLosersStocks => outData.transform(_topLosers);
-
   Map<String, Stock> _stocks = Map();
 
   StockBloc() {
