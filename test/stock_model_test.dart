@@ -11,6 +11,30 @@ void main() {
       expect(stock.currentPrice, 1.23);
     });
 
+    test('Value should be in Reais', () {
+      final stockHistory =
+          StockHistory('{"SUZB3": 1.23, "timestamp": 1574178178.748371}');
+      final stock = Stock(stockHistory);
+      expect(stock.currentPriceReais, 'R\$1.23');
+    });
+
+    test('Value should be in Reais with 00', () {
+      final stockHistory =
+          StockHistory('{"SUZB3": 9.0, "timestamp": 1574178178.748371}');
+      final stock = Stock(stockHistory);
+      expect(stock.currentPriceReais, 'R\$9.00');
+    });
+
+    test('Value after update with 0 should be 0', () {
+      final stockHistory =
+          StockHistory('{"SUZB3": 9.0, "timestamp": 1574178178.748371}');
+      final stock = Stock(stockHistory);
+      stock.updatePrice(
+          StockHistory('{"SUZB3": 0.0, "timestamp": 1574178178.748371}'));
+
+      expect(stock.percent, 0);
+    });
+
     test('Percent should start at 0%', () {
       final stockHistory =
           StockHistory('{"SUZB3": 1.23, "timestamp": 1574178178.748371}');
@@ -43,6 +67,22 @@ void main() {
       expect(stock.currentPrice, 47.94);
     });
 
+    test('Value lastupdate should be the last one 2019-11-21-15-36-47', () {
+      final stockHistory1 =
+          StockHistory('{"B3SA3": 47.59, "timestamp": 1574178178.748371}');
+      final stockHistory2 =
+          StockHistory('{"B3SA3": 49.45, "timestamp": 1574181778}');
+      final stockHistory3 =
+          StockHistory('{"B3SA3": 47.94, "timestamp": 1574361407}');
+
+      final stock = Stock(stockHistory1);
+      stock.updatePrice(stockHistory2);
+      stock.updatePrice(stockHistory3);
+      expect(stock.lastUpdate, DateTime(2019, 11, 21, 15, 36, 47));
+    });
+  });
+
+  group('Difference', () {
     test('Value difference should be 2.00 even in negative with no signal', () {
       final stockHistory1 =
           StockHistory('{"AAAA3": 14.01, "timestamp": 1574355593.254339}');
