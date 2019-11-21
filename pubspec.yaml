@@ -29,8 +29,8 @@ dependencies:
   bloc_pattern: ^1.5.2
   flutter_launcher_icons: ^0.7.4
   # charts_flutter: ^0.8.1
-  fl_animated_linechart: ^1.0.0
-  bezier_chart: "^1.0.6"
+  # fl_animated_linechart: ^1.0.0
+  # bezier_chart: "^1.0.6"
   flutter_sparkline: ^0.1.0
 
 dev_dependencies:
