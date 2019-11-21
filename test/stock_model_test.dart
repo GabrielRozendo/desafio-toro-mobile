@@ -59,13 +59,13 @@ void main() {
 
     test('Value difference should be -9.87 in negative with signal', () {
       final stockHistory1 =
-          StockHistory('{"AAAA3": 34.46, "timestamp": 1574355593.254339}');
+          StockHistory('{"AAAA3": 44.33, "timestamp": 1574355593.254339}');
       final stock = Stock(stockHistory1);
       final stockHistory2 =
           StockHistory('{"AAAA3": 40.01, "timestamp": 1574355593.254339}');
       stock.updatePrice(stockHistory2);
       final stockHistory3 =
-          StockHistory('{"AAAA3": 44.33, "timestamp": 1574355593.254339}');
+          StockHistory('{"AAAA3": 34.46, "timestamp": 1574355593.254339}');
       stock.updatePrice(stockHistory3);
 
       expect(stock.getDifference(showSignal: true), '-9.87');
@@ -87,13 +87,13 @@ void main() {
 
     test('Value difference should be +3.21 in positive with signal', () {
       final stockHistory1 =
-          StockHistory('{"AAAA3": 13.21, "timestamp": 1574355593.254339}');
+          StockHistory('{"AAAA3": 10.00, "timestamp": 1574355593.254339}');
       final stock = Stock(stockHistory1);
       final stockHistory2 =
           StockHistory('{"AAAA3": 15.01, "timestamp": 1574355593.254339}');
       stock.updatePrice(stockHistory2);
       final stockHistory3 =
-          StockHistory('{"AAAA3": 10.00, "timestamp": 1574355593.254339}');
+          StockHistory('{"AAAA3": 13.21, "timestamp": 1574355593.254339}');
       stock.updatePrice(stockHistory3);
 
       expect(stock.getDifference(showSignal: true), '+3.21');
