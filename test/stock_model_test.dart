@@ -67,7 +67,8 @@ void main() {
       expect(stock.currentPrice, 47.94);
     });
 
-    test('Value lastupdate should be the last one 2019-11-21-15-36-47', () {
+    test('''Value lastupdate should be the last one
+         2019-11-21-15-36-47 GMT-3''', () {
       final stockHistory1 =
           StockHistory('{"B3SA3": 47.59, "timestamp": 1574178178.748371}');
       final stockHistory2 =
@@ -78,7 +79,7 @@ void main() {
       final stock = Stock(stockHistory1);
       stock.updatePrice(stockHistory2);
       stock.updatePrice(stockHistory3);
-      expect(stock.lastUpdate, DateTime(2019, 11, 21, 15, 36, 47));
+      expect(stock.lastUpdate.toUtc(), DateTime.utc(2019, 11, 21, 18, 36, 47));
     });
   });
 
