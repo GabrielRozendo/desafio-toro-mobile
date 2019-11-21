@@ -10,15 +10,11 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _stockBloc = BlocProvider.of<StockBloc>(context);
-
-    if (_stockBloc.hasError || _stockBloc.isEmpty == null || _stockBloc.isEmpty)
-      return Scaffold(key: _scaffoldKey, body: showError(context));
-
     return Scaffold(
       body: StreamBuilder(
           stream: _stockBloc.outData,
           builder: (context, snapshot) {
-            if (snapshot.hasError) return Text('Error');
+            if (snapshot.hasError) return showError(context);
             if (!snapshot.hasData)
               return Center(child: CircularProgressIndicator());
 

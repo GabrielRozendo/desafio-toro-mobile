@@ -14,13 +14,11 @@ class StockBloc extends BlocBase {
   Stream<Map<String, Stock>> get outData =>
       _dataController.stream.asBroadcastStream();
 
-  Stream<List<Stock>> get outTopGainersStocks => outData.transform(_topGainers);
-  Stream<List<Stock>> get outTopLosersStocks => outData.transform(_topLosers);
+  Stream<List<Stock>> get outTopGainersStocks =>
+      outData.transform(_topGainers).asBroadcastStream();
+  Stream<List<Stock>> get outTopLosersStocks =>
+      outData.transform(_topLosers).asBroadcastStream();
   Map<String, Stock> _stocks = Map();
-  bool _isEmpty;
-  bool get isEmpty => _isEmpty;
-  bool _hasError = false;
-  bool get hasError => _hasError;
 
   StockBloc() {
     initialize();
@@ -29,12 +27,10 @@ class StockBloc extends BlocBase {
   initialize() async {
     try {
       _channel = IOWebSocketChannel.connect('ws://192.168.15.4:8080/quotes');
-      _isEmpty = await _channel.stream.isEmpty;
-      if (_channel.sink == null || _isEmpty)
+      if (_channel.sink == null)
         throw new Exception("Unable to connect to websocket! Sink is null!");
       _streamSubscription = _channel.stream.listen(newDataFromWebSocket);
     } catch (e) {
-      _hasError = true;
       print("Error on listen to channel: $e");
       _dataController.sink.addError(e);
     }
