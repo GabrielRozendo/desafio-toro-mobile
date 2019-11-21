@@ -26,7 +26,7 @@ class StockBloc extends BlocBase {
 
   initialize() async {
     try {
-      _channel = IOWebSocketChannel.connect('ws://192.168.15.4:8080/quotes');
+      _channel = IOWebSocketChannel.connect('ws://localhost:8080/quotes');
       if (_channel.sink == null)
         throw new Exception("Unable to connect to websocket! Sink is null!");
       _streamSubscription = _channel.stream.listen(newDataFromWebSocket);
