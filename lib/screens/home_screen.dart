@@ -11,6 +11,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final _stockBloc = BlocProvider.of<StockBloc>(context);
     return Scaffold(
+      key: _scaffoldKey,
       body: StreamBuilder(
           stream: _stockBloc.outData,
           builder: (context, snapshot) {
