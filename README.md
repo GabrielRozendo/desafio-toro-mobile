@@ -6,7 +6,7 @@ A descrição original do desafio está disponível [aqui](https://github.com/Ga
 
 [![Codemagic build status](https://api.codemagic.io/apps/5dd6dde7692466744eefe71b/5dd6dde7692466744eefe71a/status_badge.svg)](https://codemagic.io/apps/5dd6dde7692466744eefe71b/5dd6dde7692466744eefe71a/latest_build)
 
-[CodeMagic CI - Resultado do último Build](https://codemagic.io/app/5dd6dde7692466744eefe71b/build/5dd7036729657a000dfda428)
+[CodeMagic CI - Resultado do último Build](https://codemagic.io/app/5dd6dde7692466744eefe71b/build/5dd715aa29657a000bfda2e9)
 
 ## Problema
 
@@ -38,6 +38,7 @@ _Esses dois últimos com informações da ação e um gráfico simples com todas
 - Padronização das cores temas da [Toro Investimentos](https://www.toroinvestimentos.com.br/)
   - Preparado para personalização do tema, com as demais cores
 - Utilizando o CodeMagic para CI (conta free, com variação no tempo de build)
+- Utilização de uma splashscreen simples com flare
 
 ### Para executar o projeto
 
@@ -77,7 +78,12 @@ _Esses dois últimos com informações da ação e um gráfico simples com todas
   - Atualização do icone de forma fácil para Android e iPhone ao mesmo tempo
 
 - flutter_sparkline: ^0.1.0
+
   - Pacote de gráfico que melhor se encaixou nesse projeto
+
+- flare_splash_screen: ^3.0.0
+
+  - Pacote para fazer splash screen facilmente com flare
 
 #### Considerações
 
